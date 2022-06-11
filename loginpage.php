@@ -1,4 +1,37 @@
 <?php
+    $email="";
+    $password="";
+    $eror="";
+
+    //database connection
+    $conn=mysqli_connect("localhost","root","","userregisteration");
+
+    if(isset($_POST['login']))
+    {
+        $fname=mysqli_real_escape_string($conn, $_POST['email']);
+        $password=mysqli_real_escape_string($conn, $_POST['password']);
+    
+        $sql="select * from user where email='".$email."' and password='".$password."' limit 1";
+        $result=mysqli_query($conn,$sql);
+
+        if(empty($fname))
+        {
+            $eror="email is required ";
+        }
+        else if(empty($password))
+        {
+            $eror="password is required";
+        }
+        else if(mysqli_num_rows($result==1))
+        {
+            header('location:contact.html');
+        }
+        else
+        {
+            $eror="username or password incorrect";
+        }
+    
+    }
 
 ?>
 
@@ -7,7 +40,7 @@
 
 
 
-
+ 
 
 
 <!DOCTYPE html>
@@ -48,23 +81,28 @@
 
         <div class="login-form">
             <h1>Login</h1>
+            
+            <div class="eror">
+                <?php
+                 echo $eror;?>
+            </div>
 
             <form action="login.php" method="post">
 
                 <div class="cardtext">
-                    <input type="email" required>
+                    <input type="email" name="email" required>
                     <label>Email</label>
                     <span></span>
                 </div>
 
                 <div class="cardtext">
-                    <input type="password" required>
+                    <input type="password" name="password" required>
                     <label>Password</label>
                     <span></span>
                 </div>
 
                 <div class="cardpass">Forgot Password ?
-                    <input type="submit" value="login">
+                    <input type="submit" name="login" value="login">
                 </div>
 
                 <div class="cardsignup">Have not account?
@@ -76,4 +114,4 @@
         
 
     </body>
-</html>
+</html

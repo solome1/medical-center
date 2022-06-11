@@ -50,7 +50,7 @@ if(isset($_POST['signup']))
     
         if(count($error)===0)
         {
-            $query="insert into users(firstname,middlename,lastname,age,gender,phonenumber,email,password,confirmpassword) values('$fname','$mname,'$lname','$age','$gender','$pnumber','$email','$password','$password2')";
+            $query="insert into user (firstname,middlename,lastname,age,gender,phonenumber,email,password,confirmpassword) values('$fname','$mname','$lname','$age','$gender','$pnumber','$email','$password','$password2');";
             mysqli_query($conn,$query);
             $congra="You are successfully registerd!";
         }
@@ -75,7 +75,7 @@ if(isset($_POST['signup']))
             <!--js link-->
             <script src="script.js"></script>
 
-            <header class="header">
+            <!-- <header class="header">
                 <a href="#" class="logo"><i class="fa-solid fa-heart-pulse fa-beat"></i> Medcare </a> 
                 
                 <nav class="navbar">
@@ -87,21 +87,21 @@ if(isset($_POST['signup']))
                 </nav>  
                 <div id="menu-btn" class="fa-solid fa-bars" ></div>
             
-            </header>
+            </header> -->
 
-        <!--home section-->
-        <section class="home" id="home">
+            <!--home section-->
+            <!-- <section class="home" id="home">
 
-            <div class="image">
-                <img src="image/home-img.svg" alt="">
-            </div>
-            <div class="content">
-                <h3>Stay safe, stay healthy</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem possimus aliquid veniam saepe! Pariatur asperiores laboriosam delectus maxime rem fuga.</p>
-                <a href="#" class="btn">  Contact us  <span class="fas fa-chevron-right"></span></a>
-            </div>
+                <div class="image">
+                    <img src="image/home-img.svg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Stay safe, stay healthy</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem possimus aliquid veniam saepe! Pariatur asperiores laboriosam delectus maxime rem fuga.</p>
+                    <a href="#" class="btn">  Contact us  <span class="fas fa-chevron-right"></span></a>
+                </div>
 
-        </section>
+            </section> -->
 
 
 
@@ -121,11 +121,12 @@ if(isset($_POST['signup']))
                     echo $congra ;
                 ?>
 
+
                 <form action="signup.php"  method="post">
                     <div class="userdetails">
                         <div class="infobox">
                             <span class="details"> First Name</span>
-                            <input type="text" name="fnmae" placeholder="Enter your first name" required>
+                            <input type="text" name="fname" placeholder="Enter your first name" required>
                         </div>
 
                         <div class="infobox">
@@ -144,8 +145,8 @@ if(isset($_POST['signup']))
                         </div>
 
                         <div class="infobox">
-                            <span class="details">Gender</span>
-                            <select>
+                            <span class="details" >Gender</span>
+                            <select name ="gender">
                                 <option>Male</option>
                                 <option>Female</option>
                             </select>
@@ -203,7 +204,6 @@ if(isset($_POST['signup']))
 
 
 
-
         <!--footer section-->
 
         <section class="footer">
@@ -221,7 +221,8 @@ if(isset($_POST['signup']))
                 
                 </div>
 
-                <div class="boxx">
+
+<div class="boxx">
                     <h3>our services</h3>
                     <a href="#"> <i class="fas fa-chevron-right"></i> dental care </a>
                     <a href="#"> <i class="fas fa-chevron-right"></i> physiotherapy </a>
